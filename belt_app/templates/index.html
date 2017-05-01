@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login and Registration</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	</head>
+	<body>
+		<h1>Welcome to Favorite Quotes!</h1>
+	<!-- Registration -->
+	<div class="container">
+			<h2>Register</h2>
+			<form action='/register' method='post'>
+				{% csrf_token %}
+				<div>
+					<label>Name <input type="text" name="name"></label>
+				</div>
+				<div>
+					<label>Alias <input type="text" name="alias"></label>
+				</div>
+				<div>
+					<label>Email <input type="text" name="email"></label>
+				</div>
+				<div>
+					<label>Password <input type="password" name="password"></label>
+				</div>
+				<div>
+					<label>Confirm Password <input type="password" name="pw_confirm"></label>
+				</div>
+				<div>
+    				<label for="birthday">Date of Birthday:</label>
+    				<input type="date" for="birthday" name="birthday">
+    			</div>
+				<input type="submit" class = "submit" value="Register">
+				
+			</form>
+		</div>
+		<!-- Login Form -->
+		<div class = container>
+			<h2>Already registered?  Login.</h2>
+			<form action = '/login' method="post">
+			{% csrf_token %}
+				<div>
+					<label>Email <input type="text" name="email"></label>
+				</div>
+				<div>
+					<label>Password <input type="password" name="password"></label>
+				</div>
+				<input type="submit" class="submit" value="Login">
+			</form>
+		</div>
+		<div>
+			{% if messages %}
+			{% for message in messages %}
+			<p>{{message}}</p>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</body>
+</html>

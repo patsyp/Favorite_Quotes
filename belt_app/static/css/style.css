@@ -1,0 +1,46 @@
+body{
+	padding-left: 50px;
+	padding-top: 30px;
+}
+.container{
+	display: inline-block;
+	width: 25%;
+	margin-right: 50px;
+	vertical-align: top;
+	border: 3px solid gray;
+	padding-left: 15px;
+	padding-bottom: 10px;
+	border-radius: 3px;
+}
+label, input{
+	margin: 5px;
+}
+.header a{
+	margin: 10px
+}
+.submit{
+	margin: 10px 10px 0px 0px;
+	background-color: #c7c3c3;
+	color: white;
+	border-radius: 5px
+}
+#table{
+	margin-bottom: 15px;
+}
+.quote{
+	border: 1px solid gray;
+	padding: 10px;
+}
+.quote_container{
+	display: inline-block;
+	width: 30%;
+	height: 500px;
+	margin-right: 50px;
+	vertical-align: top;
+	border: 3px solid gray;
+	padding-left: 15px;
+	padding-bottom: 10px;
+	border-radius: 3px;
+	overflow: scroll;
+	padding: 10px;
+}
