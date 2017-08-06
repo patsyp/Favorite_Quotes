@@ -3,59 +3,72 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Login and Registration</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		{% load staticfiles %}
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	</head>
 	<body>
-		<h1>Welcome to Favorite Quotes!</h1>
-	<!-- Registration -->
-	<div class="container">
-			<h2>Register</h2>
-			<form action='/register' method='post'>
-				{% csrf_token %}
-				<div>
-					<label>Name <input type="text" name="name"></label>
+		<div class="wrapper">
+			<nav class="navbar navbar-inverse">
+				<a class="navbar-brand" href="#">Favorite Quotes</a>
+			</nav>
+			<div class="row">
+				<div class="col-md-5 container">
+					<h1>Welcome to Favorite Quotes!</h1>
 				</div>
-				<div>
-					<label>Alias <input type="text" name="alias"></label>
+			</div>
+			<div class="row">
+				<div class="col-md-4 form container">
+					<h2>Register</h2>
+					<form action='/register' method='post'>
+					{% csrf_token %}
+						<div>
+							<label>Name <input type="text" name="name"></label>
+						</div>
+						<div>
+							<label>Alias <input type="text" name="alias"></label>
+						</div>
+						<div>
+							<label>Email <input type="text" name="email"></label>
+						</div>
+						<div>
+							<label>Password <input type="password" name="password"></label>
+						</div>
+						<div>
+							<label>Confirm Password <input type="password" name="pw_confirm"></label>
+						</div>
+						<div>
+		    				<label for="birthday">Date of Birthday:</label>
+		    				<input type="date" for="birthday" name="birthday">
+		    			</div>
+						<input type="submit" class = "submit" value="Register">	
+					</form>
 				</div>
-				<div>
-					<label>Email <input type="text" name="email"></label>
+
+				<div class="col-md-4 form container" id="login">
+					<h2>Already registered?  Login.</h2>
+					<form action = '/login' method="post">
+					{% csrf_token %}
+						<div>
+							<label>Email <input type="text" name="email"></label>
+						</div>
+						<div>
+							<label>Password <input type="password" name="password"></label>
+						</div>
+						<input type="submit" class="submit" value="Login">
+					</form>
+					<div id="messages" class='text-danger'>
+						{% if messages %}
+						{% for message in messages %}
+						<p>{{message}}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
 				</div>
-				<div>
-					<label>Password <input type="password" name="password"></label>
-				</div>
-				<div>
-					<label>Confirm Password <input type="password" name="pw_confirm"></label>
-				</div>
-				<div>
-    				<label for="birthday">Date of Birthday:</label>
-    				<input type="date" for="birthday" name="birthday">
-    			</div>
-				<input type="submit" class = "submit" value="Register">
-				
-			</form>
-		</div>
-		<!-- Login Form -->
-		<div class = container>
-			<h2>Already registered?  Login.</h2>
-			<form action = '/login' method="post">
-			{% csrf_token %}
-				<div>
-					<label>Email <input type="text" name="email"></label>
-				</div>
-				<div>
-					<label>Password <input type="password" name="password"></label>
-				</div>
-				<input type="submit" class="submit" value="Login">
-			</form>
-		</div>
-		<div>
-			{% if messages %}
-			{% for message in messages %}
-			<p>{{message}}</p>
-			{% endfor %}
-			{% endif %}
+			</div>
 		</div>
 	</body>
 </html>

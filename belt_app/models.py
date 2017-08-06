@@ -15,18 +15,18 @@ class UserManager(models.Manager):
 			errors.append('Alias field cannot be blank.')
 		if  not re.search(r'\w+\@\w+.\w+', post.get('email')):
 			is_valid = False
-			errors.append('Email not valid')
+			errors.append('Email is not valid.')
 		if len(post.get('password')) < 4:
 			is_valid =False
-			errors.append('Password field must be a minimum of 4 characters')
+			errors.append('Password field must be a minimum of 4 characters.')
 		if post.get('password') != post.get('pw_confirm'):
 			is_valid = False
-			errors.append('Passwords do not match')
+			errors.append('Passwords do not match.')
 		if post.get('birthday') == '':
 			is_valid = False
-			errors.append('Date of birth field cannot be empty')
+			errors.append('Date of birth field cannot be empty.')
 		if len(post.get('birthday')) != 10:
-			errors.append('Date of birth invalid')
+			errors.append('Date of birth invalid.')
 		return (is_valid, errors)
 
 	def loginUser(self, post):
@@ -34,7 +34,7 @@ class UserManager(models.Manager):
 		if user and bcrypt.checkpw(post.get('password').encode(), user.password.encode()):
 			return {'status': True, 'user':user}
 		else:
-			return{'status': False, 'message': 'invalid credentials'}
+			return{'status': False, 'message': 'Invalid credentials'}
 
 class User(models.Model):
 	name = models.CharField(max_length = 255)
