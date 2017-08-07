@@ -32,27 +32,16 @@
 }
 .heading{
 	margin-top: 2%;
-	margin-bottom: 5%;
+	margin-bottom: 2%;
 }
-label, input{
-	margin: 5px;
-}
-.header a{
-	margin: 10px
-}
-#table{
-	margin-bottom: 15px;
-}
-.quote_container{
-	display: inline-block;
-	width: 30%;
-	height: 500px;
-	margin-right: 50px;
-	vertical-align: top;
-	/*border: 3px solid gray;*/
-	padding-left: 15px;
-	padding-bottom: 10px;
+.quote-container{
+	height: 60vh;
 	border-radius: 3px;
 	overflow: scroll;
-	padding: 10px;
+}
+#quotes{
+	margin-bottom: 5%;
+}
+#quotes h2{
+	margin-bottom: 3%;
 }
