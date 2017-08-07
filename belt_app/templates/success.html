@@ -2,57 +2,88 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<title>Quotes</title>
 			{% load staticfiles %}
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	</head>
 	<body>
-		<a class="left" href="/logout">Logout</a>
-		<h1>Welcome, {{currentUser.alias}}!</h1>
-		<div class = "quote_container">
-		<h2>Quotable Quotes</h2>
-		{% for quote in other_quotes%}
-			<div class = "quote">
-				<p>{{quote.author}}:  {{quote.content}}</p>
-				<p>Posted by <a href="quotes/users/{{quote.user.id}}">{{quote.user.alias}}</a></p>
-				<form action="/quotes/favorite/{{quote.id}}" method = post>
-				{% csrf_token %}
-					<input type="submit" value="Add to My List">
-				</form>
+		<nav class="navbar navbar-toggleable-md navbar-inverse">
+		  	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		   		<span class="navbar-toggler-icon"></span>
+		  	</button>
+			<a class="navbar-brand" href="#">Favorite Quotes</a>
+			<div class="collapse navbar-collapse" id="navbarNav">
+		    	<ul class="navbar-nav">
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="#skills">Logout</a>
+		      		</li>
+		    	</ul>
 			</div>
-		{% endfor %}
-		</div>
-		<div class = "quote_container">
-		<h2>Your Favorites</h2>
-		{% for favorite in favorites %}
-			<div class = "quote">
-				<p>{{favorite.author}}:  {{favorite.content}}</p>
-				<p>Posted by <a href="quotes/users/{{favorite.user.id}}">{{favorite.user.alias}}</a></p>
-				<form action="/quotes/remove/{{favorite.id}}" method = post>
-				{% csrf_token %}
-					<input type="submit" value="Remove From My List">
-				</form>
+		</nav>
+		<div class="row heading">
+			<div class="col-md-6">
+				<h1 class="container">Welcome, {{currentUser.alias}}!</h1>
 			</div>
-		{% endfor %}
 		</div>
-		<div>
-			<form action = "/add_quote" method = "post">
-			{% csrf_token %}
-				<h2>Contribute a Quote:</h2>
-				<label>Quoted By: <input type="text" name="author"></label>
-				<label>Message:</label>
-				<textarea name = "content"></textarea>
-				<div>
-				<input type="submit" class="submit"  value = "Submit">
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="row container">
+					<h2 class="col-md-12">Quotable Quotes</h2>
 				</div>
-			</form>
+				{% for quote in other_quotes%}
+				<div class = "quote">
+					<p>{{quote.author}}:  {{quote.content}}</p>
+					<p>Posted by <a href="quotes/users/{{quote.user.id}}">{{quote.user.alias}}</a></p>
+					<form action="/quotes/favorite/{{quote.id}}" method = post>
+					{% csrf_token %}
+						<input type="submit" value="Add to My List">
+					</form>
+				</div>
+				{% endfor %}
+			</div>
+		
+
+			<div class="col-md-4">
+				<h2>Your Favorites</h2>
+				{% for favorite in favorites %}
+				<div class = "quote">
+					<p>{{favorite.author}}:  {{favorite.content}}</p>
+					<p>Posted by <a href="quotes/users/{{favorite.user.id}}">{{favorite.user.alias}}</a></p>
+					<form action="/quotes/remove/{{favorite.id}}" method = post>
+					{% csrf_token %}
+						<input type="submit" value="Remove From My List">
+					</form>
+				</div>
+				{% endfor %}
+			</div>
 		</div>
-		<div>
-			{% if messages %}
-			{% for message in messages %}
-			<p>{{message}}</p>
-			{% endfor %}
-			{% endif %}
+
+		<div class="row">
+			<div class="col-md-6">
+				<form action = "/add_quote" method = "post">
+				{% csrf_token %}
+					<h2>Contribute a Quote:</h2>
+					<label>Quoted By: <input type="text" name="author"></label>
+					<label>Message:</label>
+					<textarea name = "content"></textarea>
+					<div>
+					<input type="submit" value = "Submit">
+					</div>
+				</form>
+
+				<div>
+					{% if messages %}
+					{% for message in messages %}
+					<p>{{message}}</p>
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
