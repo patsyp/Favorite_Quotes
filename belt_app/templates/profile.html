@@ -2,18 +2,59 @@
 <html>
 	<head>
 		<title>User Profile</title>
-		{% load staticfiles %}
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+			{% load staticfiles %}
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	</head>
 	<body>
-		<a href="/logout">Logout</a>
-		<a href="/quotes">Dashboard</a>
-		<h3>Posts by {{user.alias}}</h3>
-		<h3>Count: {{count}}</h3>
-		{% for quote in quotes %}
-		<div>
-			<p>{{quote.author}}: {{quote.content}}</p>
+		<nav class="navbar navbar-toggleable-md navbar-inverse">
+		  	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		   		<span class="navbar-toggler-icon"></span>
+		  	</button>
+			<a class="navbar-brand" href="#">Favorite Quotes</a>
+			<div class="collapse navbar-collapse" id="navbarNav">
+		    	<ul class="navbar-nav">
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="/logout">Logout</a>
+		      		</li>
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="/quotes">Dashboard</a>
+		      		</li>
+		    	</ul>
+			</div>
+		</nav>
+		<div class="row">
+			<div class="col-md-12 offset-md-1">
+				<h1 class="heading">{{user.alias}}</h1>
+			</div>
 		</div>
-		{% endfor %}
+		<div class="row">
+			<div class="col-md-12 offset-md-1">
+				<h3 class="heading">Birthday: {{user.birthday}}</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4 offset-md-1">
+				<h3>Quotes submitted by {{user.alias}}</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 offset-md-1">
+				<h4>Amount: {{count}}</h4>
+			</div>
+		</div>
+		<div class="row heading">
+			<div class="col-md-12 offset-md-1">
+				{% for quote in quotes %}
+				<div>
+					<p><span class="quote-author">{{quote.author}}:</span> {{quote.content}}</p>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
 	</body>
 </html>

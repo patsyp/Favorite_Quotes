@@ -38,15 +38,13 @@
 				</div>
 				<div class="quote-container">
 				{% for quote in other_quotes%}
-					<div class="quote">
-						<p>{{quote.author}}:  {{quote.content}}</p>
-						<p>Posted by <a href="quotes/users/{{quote.user.id}}">{{quote.user.alias}}</a></p>
-						<form action="/quotes/favorite/{{quote.id}}" method = post>
-						{% csrf_token %}
-							<input type="submit" class="btn btn-success" value="Add to My List">
-						</form>
-						<hr>
-					</div>
+					<p><span class="quote-author">{{quote.author}}:</span> {{quote.content}}</p>
+					<p>Posted by <a href="quotes/users/{{quote.user.id}}">{{quote.user.alias}}</a></p>
+					<form action="/quotes/favorite/{{quote.id}}" method = post>
+					{% csrf_token %}
+						<input type="submit" class="btn btn-success" value="Add to My List">
+					</form>
+					<hr>
 				{% endfor %}
 				</div>
 			</div>
@@ -57,15 +55,13 @@
 				</div>
 				<div class="quote-container">
 				{% for favorite in favorites %}
-					<div class = "quote">
-						<p>{{favorite.author}}:  {{favorite.content}}</p>
-						<p>Posted by <a href="quotes/users/{{favorite.user.id}}">{{favorite.user.alias}}</a></p>
-						<form action="/quotes/remove/{{favorite.id}}" method = post>
-						{% csrf_token %}
-							<input type="submit" class="btn btn-warning" value="Remove From My List">
-						</form>
-						<hr>
-					</div>
+					<p><span class="quote-author">{{favorite.author}}:</span>  {{favorite.content}}</p>
+					<p>Posted by <a href="quotes/users/{{favorite.user.id}}">{{favorite.user.alias}}</a></p>
+					<form action="/quotes/remove/{{favorite.id}}" method = post>
+					{% csrf_token %}
+						<input type="submit" class="btn btn-warning" value="Remove From My List">
+					</form>
+					<hr>
 				{% endfor %}
 				</div>
 			</div>
