@@ -42,13 +42,13 @@
 						</div>
 						<div>
 		    				<label for="birthday">Date of Birthday:</label>
-		    				<input type="date" for="birthday" name="birthday">
+		    				<input type="date" id="birthday" name="birthday">
 		    			</div>
-						<input type="submit" class = "submit" value="Register">	
+						<input type="submit" class ="btn btn-secondary" value="Register">	
 					</form>
 				</div>
 
-				<div class="col-md-4 form container" id="login">
+				<div class="col-md-4 form container">
 					<h2>Already registered?  Login.</h2>
 					<form action = '/login' method="post">
 					{% csrf_token %}
@@ -58,7 +58,7 @@
 						<div>
 							<label>Password <input type="password" name="password"></label>
 						</div>
-						<input type="submit" class="submit" value="Login">
+						<input type="submit" class ="btn btn-secondary" value="Login">
 					</form>
 					<div id="messages" class='text-danger'>
 						{% if messages %}

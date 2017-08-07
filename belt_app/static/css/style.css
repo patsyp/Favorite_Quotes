@@ -45,3 +45,7 @@
 #quotes h2{
 	margin-bottom: 3%;
 }
+.quote-author{
+	font-weight: bold;
+	margin-right: 5px;
+}
