@@ -30,24 +30,18 @@
 #messages{
 	margin-top: 3%;
 }
+.heading{
+	margin-top: 2%;
+	margin-bottom: 5%;
+}
 label, input{
 	margin: 5px;
 }
 .header a{
 	margin: 10px
 }
-.submit{
-	margin: 10px 10px 0px 0px;
-	background-color: #c7c3c3;
-	color: white;
-	border-radius: 5px
-}
 #table{
 	margin-bottom: 15px;
-}
-.quote{
-	border: 1px solid gray;
-	padding: 10px;
 }
 .quote_container{
 	display: inline-block;
@@ -55,7 +49,7 @@ label, input{
 	height: 500px;
 	margin-right: 50px;
 	vertical-align: top;
-	border: 3px solid gray;
+	/*border: 3px solid gray;*/
 	padding-left: 15px;
 	padding-bottom: 10px;
 	border-radius: 3px;
